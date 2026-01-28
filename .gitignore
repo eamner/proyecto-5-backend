@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+
+# Entorno Virtual
+env/
+venv/
+.env
+
+# Docker
+.docker/

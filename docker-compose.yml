@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: p5-db
+    environment:
+      - POSTGRES_USER=${DB_USER}       
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    networks:
+      - red_interna
+    volumes:
+      - db_data:/var/lib/postgresql/data  
+  
+  cache:
+    image: redis:7.4-alpine 
+    container_name: p5-redis
+    restart: always
+    volumes:
+      - redis_data:/data 
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASSWORD}
+    networks:
+      - red_interna
+
+  app:
+    image: python:3.11-slim
+    container_name: p5-app
+    volumes:
+        - .:/app
+    working_dir: /app
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}    
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    command: >
+      sh -c "pip install -r requirements.txt && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    ports:
+      - "8000:8000"
+    networks:
+      - red_interna
+
+networks:
+  red_interna:
+    driver: bridge
+
+volumes:
+  db_data:
+  redis_data:
