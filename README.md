@@ -1,9 +1,9 @@
 # 🚀 API de Gestión - Proyecto 5
 
-Sistema de API REST desarrollado con **FastAPI**, utilizando **PostgreSQL** para persistencia de datos y **Redis** para optimización de caché, todo orquestado con **Docker**.
+Sistema de API REST desarrollado con **FastAPI**, utilizando **PostgreSQL** para persistencia de datos y **Redis** para optimización de caché, integrado en **Docker**.
 
 ## 🌐 Demo en Vivo
-Puedes probar la API desplegada en Render aquí: 
+Para probar la API desplegada en Render: 
 👉https://mi-primera-api-v2.onrender.com/docs 
 
 ## 🛠️ Stack Tecnológico
@@ -15,12 +15,12 @@ Puedes probar la API desplegada en Render aquí:
 * **Despliegue:** Render
 
 ## ⚙️ Configuración Local
-Para correr este proyecto en tu máquina (Kubuntu u otro):
+Para correr este proyecto localmente:
 
 1. **Clonar el repo:**
    ```bash
    git clone [https://github.com/eamner/proyecto-5-backend.git](https://github.com/eamner/proyecto-5-backend.git)
-Configurar variables: Copia el archivo .env.example a .env y rellena tus credenciales.
+Configurar variables: Copiar el archivo .env.example a .env y rellenar credenciales.
 
 Levantar con Docker:
 
